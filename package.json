@@ -1,0 +1,25 @@
+{
+  "name": "mypremierleague",
+  "version": "1.0.0",
+  "description": "All of your English Premier League info in one place.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avnvbhatta/MyPremierLeague.git"
+  },
+  "author": "Abhinav Bhatta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/avnvbhatta/MyPremierLeague/issues"
+  },
+  "homepage": "https://github.com/avnvbhatta/MyPremierLeague#readme",
+  "dependencies": {
+    "node-sass": "^5.0.0"
+  },
+  "devDependencies": {
+    "sass": "^1.29.0"
+  }
+}
