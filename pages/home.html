@@ -5,8 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Premier League</title>
     <script defer src="/scripts/home.js"></script>
+    <link rel="stylesheet" href="/styles/home.scss">
 </head>
 <body>
     <h1>Home Page</h1>
+    <div class="upcomingFixtures">
+        <h2>Upcoming Fixtures</h2>
+        <ul id="fixturesList"></ul>
+    </div>
+
+    <div class="news">
+        <h2>News</h2>
+        <ul id="newsList"></ul>
+    </div>
+
+    <div class="table">
+        <h2>League Table</h2>
+        <table id="leagueTable">
+            <tr>
+                <th>Rank</th>
+                <th><img src="" alt="" >Team</th>
+                <th>Form</th>
+                <th>Points</th>
+                <th>Played</th>
+                <th>Won</th>
+                <th>Lost</th>
+                <th>Draw</th>
+                <th>Goal Diff</th>
+            </tr>
+            
+        </table>
+    </div>
+    
 </body>
 </html>

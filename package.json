@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/avnvbhatta/MyPremierLeague#readme",
   "dependencies": {
+    "axios": "^0.21.0",
     "node-sass": "^5.0.0"
   },
   "devDependencies": {
