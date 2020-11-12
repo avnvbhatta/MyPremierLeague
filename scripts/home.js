@@ -33,7 +33,6 @@ axiosAPIFootball.get(`/leagueTable/2790`)
     let data = response.data.api.standings[0];
     let leagueTable = document.getElementById('leagueTable');
 
-    // console.log(data);
     data.forEach(teamData =>{
         let {teamName, rank, logo, forme, goalsDiff, points, all} = teamData;
         let {win, lose, draw, matchsPlayed} = all;
@@ -69,7 +68,6 @@ axiosAPIFootball.get(`/leagueTable/2790`)
         let redditURL = `http://www.reddit.com${news.data.permalink}`;
         let thumbnail = news.data.thumbnail === 'self' ? placeHolderImage : news.data.thumbnail;
         let title = news.data.title;
-        console.log(thumbnail)
         ul.innerHTML += (`<li><img class="redditThumb" src=${thumbnail} alt="${title}" /><a href="${redditURL}" target="_blank">${title}</a></li>`);
     })
   })

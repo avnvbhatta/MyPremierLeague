@@ -7,7 +7,6 @@ document.getElementById('loginForm').onsubmit = function(event) {
         email: email,
         password: password
     }
-    console.log(formData);
 };
 
 //SignUp Form Submit
@@ -21,7 +20,6 @@ document.getElementById('signUpForm').onsubmit = function(event) {
         email: email,
         password: password
     }
-    console.log(formData);
 };
 
 
