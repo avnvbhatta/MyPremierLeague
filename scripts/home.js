@@ -6,6 +6,8 @@ import placeHolderImage from "../images/img-placeholder.png";
 const teamID = 33;
 const numOfFixtures = 5;
 
+
+
 axiosAPIFootball.get(`/fixtures/team/${teamID}/next/${numOfFixtures}?timezone=America/New_York`)
   .then(function (response) {
     // handle success
