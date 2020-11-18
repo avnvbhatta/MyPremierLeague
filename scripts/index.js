@@ -20,7 +20,8 @@ document.getElementById('loginForm').onsubmit = function(event) {
 };
 
 //SignUp Form Submit
-document.getElementById('signUpForm').onsubmit = function(event) { 
+let signUpForm  = document.getElementById('signUpForm');
+signUpForm.onsubmit = function(event) { 
     event.preventDefault();
     let name = document.getElementById("name").value;
     let email = document.getElementById("email_signup").value;
@@ -33,6 +34,9 @@ document.getElementById('signUpForm').onsubmit = function(event) {
         teamSelect: teamSelect
     }
     signUp(formData);
+
+    //clear form on submit
+    signUpForm.reset();
 };
 
 
