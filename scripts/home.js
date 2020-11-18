@@ -1,14 +1,21 @@
 const axiosDefault = require('axios').default;
 import axiosAPIFootball from "../helpers/helpers";
 import placeHolderImage from "../images/img-placeholder.png";
+import teamsData from "../helpers/teamsData";
+import {checkLoggedIn} from "../helpers/auth";
 
-// Make a request for a user with a given ID
-const teamID = 33;
+//Check if stored user data is valid
+checkLoggedIn();
+
+const userData = JSON.parse(localStorage.getItem('userData'));
+const {teamSelect} = userData;
+
+const {subreddit} = teamsData[teamSelect];
+
 const numOfFixtures = 5;
 
 
-
-axiosAPIFootball.get(`/fixtures/team/${teamID}/next/${numOfFixtures}?timezone=America/New_York`)
+axiosAPIFootball.get(`/fixtures/team/${teamSelect}/next/${numOfFixtures}?timezone=America/New_York`)
   .then(function (response) {
     // handle success
     let data = response.data.api.fixtures;
@@ -60,7 +67,7 @@ axiosAPIFootball.get(`/leagueTable/2790`)
 
 
 
-  axiosDefault.get(`https://www.reddit.com/r/reddevils.json?limit=10`)
+  axiosDefault.get(`${subreddit}.json?limit=10`)
   .then(function (response) {
     // handle success
     let data = response.data.data.children;

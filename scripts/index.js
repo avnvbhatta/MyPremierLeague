@@ -1,5 +1,6 @@
 import teamsData from "../helpers/teamsData";
-import axios from "axios";
+import {logIn, signUp} from "../helpers/auth";
+
 let selectTeams = document.getElementById('teamSelect');
 //populate teams dynamically
 for (const [key, value] of Object.entries(teamsData)) {
@@ -15,13 +16,7 @@ document.getElementById('loginForm').onsubmit = function(event) {
         email: email,
         password: password
     }
-    axios.post('http://localhost:5000/login', formData)
-        .then(res => {
-            localStorage.setItem('userData', res.data);
-        })
-        .catch(err=>{
-            console.log(err)
-        })
+    logIn(formData);
 };
 
 //SignUp Form Submit
@@ -37,16 +32,7 @@ document.getElementById('signUpForm').onsubmit = function(event) {
         password: password,
         teamSelect: teamSelect
     }
-
-    axios.post('http://localhost:5000/signup', formData)
-        .then(res => {
-            console.log(res.data)
-        })
-        .catch(err=>{
-            console.log(err)
-        })
-
-    console.log(formData)
+    signUp(formData);
 };
 
 

@@ -1,4 +1,11 @@
 import axiosAPIFootball from "../helpers/helpers";
+import {checkLoggedIn} from "../helpers/auth";
+
+//Check if stored user data is valid
+checkLoggedIn();
+
+const userData = JSON.parse(localStorage.getItem('userData'));
+const {teamSelect} = userData;
 
 //Get Top Scorers
 axiosAPIFootball.get(`/topscorers/2790`)
@@ -21,7 +28,7 @@ axiosAPIFootball.get(`/topscorers/2790`)
 
 
 //Get Top Scorers
-axiosAPIFootball.get(`/statistics/2790/33`)
+axiosAPIFootball.get(`/statistics/2790/${teamSelect}`)
 .then(function (response) {
   // handle success
     let data = response.data.api.statistics;

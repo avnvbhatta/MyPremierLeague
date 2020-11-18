@@ -1,8 +1,15 @@
 //
 import axiosAPIFootball from "../helpers/helpers";
+import {checkLoggedIn} from "../helpers/auth";
+
+
+
+
+//Check if stored user data is valid
+checkLoggedIn();
+
 let fixturesData = [];
 let currentGW = '';
-let dataLoaded = false;
 //Populate gameweek dropdowns
 for(let i=1; i<39; i++){
     document.getElementById('gameweek').innerHTML += `<option value="${i}">Gameweek ${i}</option>`
