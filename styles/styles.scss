@@ -1,3 +1,31 @@
-#loginForm, #signUpForm button{
-    width: 100%;
+body{
+    height: 100vh;
+}
+
+
+
+#loginForm, #signUpForm{
+    button{
+        width: 100%;
+    }
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+
+    .btn{
+        width: 150px;
+        margin: 5px;
+    }
+
+}
+
+.alert{
+    margin-top:10px;
+    text-align: center;
 }

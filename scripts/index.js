@@ -8,7 +8,8 @@ for (const [key, value] of Object.entries(teamsData)) {
 }
 
 //Login Form Submit
-document.getElementById('loginForm').onsubmit = function(event) { 
+let loginForm = document.getElementById('loginForm');
+loginForm.onsubmit = function(event) { 
     event.preventDefault();
     let email = document.getElementById("email_login").value;
     let password = document.getElementById("password_login").value;
@@ -39,6 +40,8 @@ signUpForm.onsubmit = function(event) {
     signUpForm.reset();
 };
 
-
-
+//Reset login errors field
+loginForm.addEventListener('input' , function(){
+    document.getElementById('error').innerHTML = '';
+})
 

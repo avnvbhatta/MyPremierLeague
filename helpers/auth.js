@@ -9,7 +9,11 @@ const logIn = (formData) => {
                 window.location.replace("/pages/home.html");
             }
             else{
-                alert('No user found')
+                // alert('No user found')
+                document.getElementById('error').innerHTML = 
+                `<div class="alert alert-danger" role="alert">
+                    Invalid email and/or password.
+              </div>`
             }
             
         })
