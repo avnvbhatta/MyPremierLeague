@@ -7,24 +7,35 @@
     <script defer src="/scripts/home.js"></script>
     <script defer src="/scripts/logOut.js"></script>
     <link rel="stylesheet" href="/styles/home.scss">
+    <link rel="stylesheet" href="/styles/styles.scss">
+    
+
 </head>
 <body>
     <nav>
-        <a href="/pages/home.html">Home</a>
-        <a href="/pages/fixtures.html">Fixtures</a>
-        <a href="/pages/stats.html">Stats</a>
+        <a href="./home.html">Home</a>
+        <a href="./fixtures.html">Fixtures</a>
+        <a href="./stats.html">Stats</a>
         <button id="logOutBtn" onclick='logOut()'>LogOut</button>
     </nav>
-    <h1>Home Page</h1>
-    <div class="upcomingFixtures">
-        <h2>Upcoming Fixtures</h2>
-        <ul id="fixturesList"></ul>
+    <div class="myContainer">
+        <div class="title">Upcoming Fixtures</div>
+       
+        <div id="fixturesList" class="content">
+
+        </div>
     </div>
 
-    <div class="news">
-        <h2>News</h2>
-        <ul id="newsList"></ul>
+    <div class="myContainer">
+        <div class="title">News</div>
+        <div class="content">
+            <div id="newsList" class="news">
+
+            </div>
+
+        </div>
     </div>
+
 
     <div class="table">
         <h2>League Table</h2>

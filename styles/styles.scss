@@ -1,5 +1,8 @@
 body{
     height: 100vh;
+    margin:0;
+    padding:0;
+    font-family: 'Roboto', sans-serif;
 }
 
 
@@ -28,4 +31,23 @@ body{
 .alert{
     margin-top:10px;
     text-align: center;
+}
+
+
+
+nav{
+    background-color: #38003D;
+    text-transform: lowercase;
+    display: flex;
+    justify-content: flex-end;
+    height: 7vh;
+    align-items: center;
+    *{
+        margin-left: 3em;
+
+    }
+    a{
+        text-decoration: none;
+        color: white;
+    }
 }
