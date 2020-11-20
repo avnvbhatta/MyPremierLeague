@@ -4,7 +4,7 @@ import placeHolderImage from "../images/img-placeholder.png";
 import teamsData from "../helpers/teamsData";
 import {checkLoggedIn} from "../helpers/auth";
 
-//Check if stored user data is valid
+//Check if stored user data is valid 
 checkLoggedIn();
 const userData = JSON.parse(localStorage.getItem('userData'));
 const {teamSelect} = userData;
