@@ -10,12 +10,25 @@
         max-width: 900px;
         margin:auto;
         width: 100%;
-    }
 
-    select{
-        width: 200px;
-        text-align: center;
-        margin-top: 25px;
+        .gwSelectors{
+            margin-left: auto;
+            min-width: 200px;
+            select{
+                height: 50px;
+                padding: 1em;
+                border-radius: 10px;
+                background: #38003D;
+                color: white;
+                outline: none;
+                border: none;
+                cursor: pointer;
+            }
+            i{
+                cursor: pointer;
+                margin: 0 0.5em;
+            }
+        }
     }
 }
 

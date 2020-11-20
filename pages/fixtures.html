@@ -8,7 +8,8 @@
     <script defer src="/scripts/logOut.js"></script>
     <link rel="stylesheet" href="/styles/fixtures.scss">
     <link rel="stylesheet" href="/styles/styles.scss">
-  
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
 </head>
 <body>
     <nav>
@@ -20,9 +21,22 @@
     </nav>
     
     <div class="mainContent">
-        <select name="gameweek"  id="gameweek"></select>
+
+        
+        
+
+
+        <!-- <button id="minus">minus</button>
+        <button id="plus">plus</button> -->
         <div class="myContainer">
-            <div class="title">Upcoming Fixtures</div>
+            <div class="title">
+                <p>Upcoming Fixtures</p>
+                <div class="gwSelectors">
+                    <i id="minus" class="fas fa-chevron-left fa-lg"></i>
+                    <select name="gameweek"  id="gameweek"></select>
+                    <i  id="plus" class="fas fa-chevron-right fa-lg"></i>
+                </div>
+            </div>
             <div id="fixturesList" class="content"></div>
         </div>    
     </div>

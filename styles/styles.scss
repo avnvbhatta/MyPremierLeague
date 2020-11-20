@@ -75,7 +75,7 @@ nav{
     }
 
     .content{
-        background-color: white;
+        background-color: gainsboro;
         margin: 1em;
         padding: 1em;
         border-radius: 0 0 20px 20px;
@@ -87,6 +87,11 @@ nav{
             display: flex;
             flex-direction: column;
             margin: 1em 0 0 0;
+            .newsRow{
+                background-color: white;
+                padding: 1em;
+                border-radius: 10px;
+            }
             div{
                 display: flex;
                 flex-direction: row;
@@ -105,6 +110,10 @@ nav{
             display: flex;
             flex-direction: row;
             justify-content: space-between;
+            margin: 0.3em 0;
+            background-color: white;
+            padding: 1em;
+            border-radius: 10px;
             
             .homeTeam, .awayTeam, .fixtureDetails{
                 display: flex;
@@ -130,9 +139,18 @@ nav{
             }
         }
 
+        &--table{
+            @extend .content;
+            background-color: white;
+        }
+
         table{
             text-align: center;
             width: 100%;
+            border-collapse:collapse;
+            // background-color: white;
+
+    
             img{
                 padding-left: 50px;
             }
@@ -144,3 +162,4 @@ nav{
     }
     
 }
+

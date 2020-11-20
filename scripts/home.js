@@ -99,7 +99,7 @@ axiosAPIFootball.get(`/leagueTable/2790`)
         let redditURL = `http://www.reddit.com${news.data.permalink}`;
         let thumbnail = news.data.thumbnail === 'self' ? placeHolderImage : news.data.thumbnail;
         let title = news.data.title;
-        newsList.innerHTML += (`<div><img class="redditThumb" src=${thumbnail} alt="${title}" /><a href="${redditURL}" target="_blank">${title}</a></div>`);
+        newsList.innerHTML += (`<div class="newsRow"><img class="redditThumb" src=${thumbnail} alt="${title}" /><a href="${redditURL}" target="_blank">${title}</a></div>`);
     })
   })
   .catch(function (error) {
