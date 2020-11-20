@@ -6,10 +6,8 @@ import {checkLoggedIn} from "../helpers/auth";
 
 //Check if stored user data is valid
 checkLoggedIn();
-console.log('hi')
 const userData = JSON.parse(localStorage.getItem('userData'));
 const {teamSelect} = userData;
-
 const {logo, subreddit, colors} = teamsData[teamSelect];
 
 const numOfFixtures = 5;

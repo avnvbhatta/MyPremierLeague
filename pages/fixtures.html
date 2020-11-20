@@ -6,25 +6,29 @@
     <title>Fixtures - My Premier League</title>
     <script defer src="/scripts/fixtures.js"></script>
     <script defer src="/scripts/logOut.js"></script>
-    <script>
-        
-    </script>
+    <link rel="stylesheet" href="/styles/fixtures.scss">
+    <link rel="stylesheet" href="/styles/styles.scss">
+  
 </head>
 <body>
     <nav>
+        <img id="userClubLogo" src="" alt="userClubLogo" >
         <a href="./home.html">Home</a>
         <a href="./fixtures.html">Fixtures</a>
         <a href="./stats.html">Stats</a>
-        <button id="logOutBtn" onclick='logOut()'>LogOut</button>
+        <a id="logOutBtn" onclick='logOut()'>log out</a>
     </nav>
-    <h1>Fixtures Page</h1>
-    <select name="gameweek" id="gameweek">
+    
+    <div class="mainContent">
+        <select name="gameweek"  id="gameweek"></select>
+        <div class="myContainer">
+            <div class="title">Upcoming Fixtures</div>
+            <div id="fixturesList" class="content"></div>
+        </div>    
+    </div>
 
-    </select>
+    
 
-    <ul id="fixturesList">
-
-    </ul>
   
 </body>
 </html>

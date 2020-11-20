@@ -1,12 +1,21 @@
 //
 import axiosAPIFootball from "../helpers/helpers";
 import {checkLoggedIn} from "../helpers/auth";
+import teamsData from "../helpers/teamsData";
 
 
 
 
 //Check if stored user data is valid
 checkLoggedIn();
+
+const userData = JSON.parse(localStorage.getItem('userData'));
+const {teamSelect} = userData;
+const {logo, subreddit, colors} = teamsData[teamSelect];
+
+document.getElementsByTagName('body')[0].style.backgroundColor = colors;
+
+document.getElementById('userClubLogo').src = logo;
 
 let fixturesData = [];
 let currentGW = '';
@@ -53,13 +62,32 @@ document.getElementById("gameweek").addEventListener("change", function(event) {
 });
 
 function populate(selectedGW){
-    var ul = document.getElementById("fixturesList");
-    ul.innerHTML = "";
+    var fixtureList = document.getElementById("fixturesList");
+    fixtureList.innerHTML = "";
     for(let i=selectedGW*10; i<selectedGW*10+10; i++){
-        let homeTeam = fixturesData[i].homeTeam.team_name;
-        let awayTeam = fixturesData[i].awayTeam.team_name;
+
+      let {homeTeam: {logo: homeTeamLogo, team_name: homeTeamName}} = fixturesData[i];
+        let {awayTeam: {logo: awayTeamLogo, team_name: awayTeamName}} = fixturesData[i];
         let date = fixturesData[i].event_date;
         let venue = fixturesData[i].venue;
-        ul.innerHTML += (`<li>${homeTeam} vs ${awayTeam} - ${date} - ${venue}</li>`);
-    }  
+
+        
+        fixtureList.innerHTML +=
+        `
+          <div class="fixtureRow">
+                <div class="homeTeam">
+                    <img src="${homeTeamLogo}" alt="" >
+                    <p>${homeTeamName}</p>
+                </div>
+                <div class="fixtureDetails">
+                    <div class="venue">${venue}</div>
+                    <div class="datetime">${date}</div>
+                </div>
+                <div class="awayTeam">
+                    <p>${awayTeamName}</p>
+                    <img src="${awayTeamLogo}" alt="" >
+                </div>
+            </div>
+        `
+      }  
 }

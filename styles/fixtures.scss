@@ -1,0 +1,21 @@
+
+
+.mainContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .myContainer{
+        max-width: 900px;
+        margin:auto;
+        width: 100%;
+    }
+
+    select{
+        width: 200px;
+        text-align: center;
+        margin-top: 25px;
+    }
+}
+
