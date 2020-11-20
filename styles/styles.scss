@@ -34,7 +34,6 @@ body{
 }
 
 
-
 nav{
     background-color: #38003D;
     text-transform: lowercase;
@@ -43,11 +42,20 @@ nav{
     height: 7vh;
     align-items: center;
     *{
-        margin-left: 3em;
+        margin: 0 1em 0 3em;
+
+    }
+    #userClubLogo{
+        margin-right: auto;
+        height: 50px;
+        width: 50px;
+        margin-left: 1em;
 
     }
     a{
         text-decoration: none;
         color: white;
+        cursor: pointer;
     }
+
 }
