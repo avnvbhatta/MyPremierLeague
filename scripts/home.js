@@ -10,12 +10,13 @@ console.log('hi')
 const userData = JSON.parse(localStorage.getItem('userData'));
 const {teamSelect} = userData;
 
-const {subreddit, colors} = teamsData[teamSelect];
+const {logo, subreddit, colors} = teamsData[teamSelect];
 
 const numOfFixtures = 5;
 
 document.getElementsByTagName('body')[0].style.backgroundColor = colors;
 
+document.getElementById('userClubLogo').src = logo;
 
 axiosAPIFootball.get(`/fixtures/team/${teamSelect}/next/${numOfFixtures}?timezone=America/New_York`)
   .then(function (response) {

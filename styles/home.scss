@@ -11,7 +11,9 @@
 .mainContent{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;;
+    justify-content: center;
+    margin:auto;
+    text-align: center;
 
     .left{
         display: flex;
@@ -22,7 +24,6 @@
     .right{
         display: flex;
         flex-direction: row;
-        width: 100%;
         max-width: 900px;        
     }
 }
