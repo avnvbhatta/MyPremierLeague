@@ -57,35 +57,37 @@ axiosAPIFootball.get(`/fixtures/team/${teamSelect}/next/${numOfFixtures}?timezon
   });
 
 
-// axiosAPIFootball.get(`/leagueTable/2790`)
-//   .then(function (response) {
-//     // handle success
-//     let data = response.data.api.standings[0];
-//     let leagueTable = document.getElementById('leagueTable');
+axiosAPIFootball.get(`/leagueTable/2790`)
+  .then(function (response) {
+    // handle success
+    let data = response.data.api.standings[0];
+    let leagueTable = document.getElementById('leagueTable');
 
-//     data.forEach(teamData =>{
-//         let {teamName, rank, logo, forme, goalsDiff, points, all} = teamData;
-//         let {win, lose, draw, matchsPlayed} = all;
+    data.forEach(teamData =>{
+        let {teamName, rank, logo, forme, goalsDiff, points, all} = teamData;
+        let {win, lose, draw, matchsPlayed} = all;
         
-//         let rowData = `<td>${rank}</td>
-//         <td><img class="teamLogo" src="${logo}" alt="${teamName}" >${teamName}</td>
-//         <td>${forme}</td>
-//         <td>${points}</td>
-//         <td>${matchsPlayed}</td>
-//         <td>${win}</td>
-//         <td>${lose}</td>
-//         <td>${draw}</td>
-//         <td>${goalsDiff}</td>`
-//         leagueTable.innerHTML += rowData;
-//     })
-// })
-//   .catch(function (error) {
-//     // handle error
-//   })
-//   .then(function () {
-//     // always executed
-//   });
+        let rowData = `<tr><td>${rank}</td>
+        <td><img class="teamLogo" src="${logo}" alt="${teamName}" ></td>
+        <td class="teamName">${teamName}</td>
+        <td>${forme}</td>
+        <td>${points}</td>
+        <td>${matchsPlayed}</td>
+        <td>${win}</td>
+        <td>${lose}</td>
+        <td>${draw}</td>
+        <td>${goalsDiff}</td></tr>`
+        leagueTable.innerHTML += rowData;
+    })
+})
+  .catch(function (error) {
+    // handle error
+  })
+  .then(function () {
+    // always executed
+  });
 
+  
 
 
   axiosDefault.get(`${subreddit}.json?limit=10`)

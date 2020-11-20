@@ -18,41 +18,45 @@
         <a href="./stats.html">Stats</a>
         <button id="logOutBtn" onclick='logOut()'>LogOut</button>
     </nav>
-    <div class="myContainer">
-        <div class="title">Upcoming Fixtures</div>
-       
-        <div id="fixturesList" class="content">
 
-        </div>
-    </div>
-
-    <div class="myContainer">
-        <div class="title">News</div>
-        <div class="content">
-            <div id="newsList" class="news">
-
+    <div class="mainContent">
+        <div class="left">
+            <div class="myContainer">
+                <div class="title">Upcoming Fixtures</div>
+                <div id="fixturesList" class="content"></div>
             </div>
-
+        
+            <div class="myContainer">
+                <div class="title">News</div>
+                <div class="content">
+                    <div id="newsList" class="news"></div>
+                </div>
+            </div>
         </div>
-    </div>
-
-
-    <div class="table">
-        <h2>League Table</h2>
-        <table id="leagueTable">
-            <tr>
-                <th>Rank</th>
-                <th><img src="" alt="" >Team</th>
-                <th>Form</th>
-                <th>Points</th>
-                <th>Played</th>
-                <th>Won</th>
-                <th>Lost</th>
-                <th>Draw</th>
-                <th>Goal Diff</th>
-            </tr>
-            
-        </table>
+        <div class="right">
+            <div class="table myContainer">
+                <div class="title">League Table</div>
+                <div class="content">
+                    <table id="leagueTable">
+                        <tr>
+                            <th>Rank</th>
+                            <th colspan="2">Team</th>
+                            <th>Form</th>
+                            <th>Points</th>
+                            <th>Played</th>
+                            <th>Won</th>
+                            <th>Lost</th>
+                            <th>Draw</th>
+                            <th>Goal Diff</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+    
+    
+        
     </div>
     
 </body>

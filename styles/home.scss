@@ -8,11 +8,26 @@
     width: 50px;
 }
 
+.mainContent{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;;
+
+    .left{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 900px;
+    }
+    .right{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        max-width: 900px;        
+    }
+}
+
 .myContainer{
-    // background-color: white;
-    // margin: 1em;
-    // padding: 0.5em;
-    // border-radius: 20px;
 
     .title{
         background-color: #38003D;
@@ -44,8 +59,8 @@
                 align-items: center;
                 margin-bottom: 1em;
                 img{
-                    width: 100px;
-                    height: 50px;
+                    min-width:200px;
+                    height: 150px;
                     margin-right: 1em;;
                 }
             }
@@ -80,6 +95,18 @@
                 align-items: center;
             }
         }
+
+        table{
+            text-align: center;
+            width: 100%;
+            img{
+                padding-left: 50px;
+            }
+            .teamName{
+                text-align:left;
+            }
+        }
+        
     }
     
 }
