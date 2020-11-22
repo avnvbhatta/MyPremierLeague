@@ -28,7 +28,6 @@ axiosAPIFootball.get(`/topscorers/2790`)
     
     //For each scorer data, append a 'scorerRow' div with data
     data.forEach(scorer => {
-        console.log(scorer);
         let {player_name, team_id, team_name, goals: {total, assists}} = scorer;
         let {logo} = teamsData[team_id];
         topScorersList.innerHTML += 

@@ -3,7 +3,6 @@ const axios = require('axios').default;
 const logIn = (formData) => {
     axios.post('http://localhost:5000/login', formData)
         .then(res => {
-            console.log(res.data)
             if(res.data.data){
                 localStorage.setItem('userData', JSON.stringify(res.data.data));
                 window.location.replace("/pages/home.html");
@@ -25,7 +24,6 @@ const logIn = (formData) => {
 const signUp =(formData) =>{
     axios.post('http://localhost:5000/signup', formData)
     .then(res => {
-        console.log(res.data)
     })
     .catch(err=>{
         console.log(err)
