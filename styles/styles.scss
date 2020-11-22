@@ -56,6 +56,7 @@ nav{
         text-decoration: none;
         color: white;
         cursor: pointer;
+        position: relative;
     }
 
 }
@@ -162,3 +163,11 @@ nav{
     
 }
 
+.underline{
+    width: 100%;
+    border: 1px solid white;
+    background-color: white;
+    position: absolute;
+    right: -15px;
+    top: 25px;   
+}

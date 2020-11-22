@@ -1,4 +1,3 @@
-//
 import axiosAPIFootball from "../helpers/helpers";
 import {checkLoggedIn} from "../helpers/auth";
 import teamsData from "../helpers/teamsData";
@@ -11,8 +10,13 @@ const userData = JSON.parse(localStorage.getItem('userData'));
 const {teamSelect} = userData;
 const {logo, colors} = teamsData[teamSelect];
 
+//set background colors based on club selected
 document.getElementsByTagName('body')[0].style.backgroundColor = colors;
+//get club's logo and place it on navbar
 document.getElementById('userClubLogo').src = logo;
+//highlight the navbar by underlining the current page
+document.getElementsByTagName('a')[1].innerHTML += `<div class="underline"></div>`;
+
 
 let fixturesData = [];
 let currentGW = 0;
@@ -20,11 +24,11 @@ let selectedGW = 0;
 let selectDropdown = document.getElementById('gameweek');
 
 
+//Function to set dropdown value based on gameweek. Triggers a new change event as well.
 function setDropdownValue(gameweek){
   selectDropdown.value = gameweek;
   selectDropdown.dispatchEvent(new Event('change'));
   populate(gameweek);
-
 }
 
 //Get fixtures first
@@ -40,7 +44,6 @@ axiosAPIFootball.get(`/fixtures/league/2790?timezone=America/New_York`)
       let data = response.data.api.fixtures[0];
       let matches = data.match(/(\d+)/); 
       currentGW = parseInt(matches[0])-1; //as data fetched is 1 based index, not 0 based.
-      console.log('currentGW', currentGW);
       selectedGW = parseInt(currentGW);
 
       //Populate gameweek dropdowns

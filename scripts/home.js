@@ -6,29 +6,35 @@ import {checkLoggedIn} from "../helpers/auth";
 
 //Check if stored user data is valid 
 checkLoggedIn();
+
+//Get user data from localstorage
 const userData = JSON.parse(localStorage.getItem('userData'));
 const {teamSelect} = userData;
 const {logo, subreddit, colors} = teamsData[teamSelect];
 
+//configure number of fixtures to display
 const numOfFixtures = 5;
 
+
+//set background colors based on club selected
 document.getElementsByTagName('body')[0].style.backgroundColor = colors;
-
+//get club's logo and place it on navbar
 document.getElementById('userClubLogo').src = logo;
+//highlight the navbar by underlining the current page
+document.getElementsByTagName('a')[0].innerHTML += `<div class="underline"></div>`;
 
+
+//Get fixtures in Eastern Time zone.
 axiosAPIFootball.get(`/fixtures/team/${teamSelect}/next/${numOfFixtures}?timezone=America/New_York`)
   .then(function (response) {
     // handle success
     let data = response.data.api.fixtures;
     var fixtureList = document.getElementById("fixturesList");
-    console.log(data)
     data.forEach(fixture => {
-        // let homeTeam = fixture.homeTeam.team_name;
         let {homeTeam: {logo: homeTeamLogo, team_name: homeTeamName}} = fixture;
         let {awayTeam: {logo: awayTeamLogo, team_name: awayTeamName}} = fixture;
         let date = fixture.event_date;
         let venue = fixture.venue;
-        // fixtureList.innerHTML += (`<div>${homeTeam} vs ${awayTeam} - ${date} - ${venue}</div>`);
         fixtureList.innerHTML +=
         `
           <div class="fixtureRow">
@@ -56,6 +62,7 @@ axiosAPIFootball.get(`/fixtures/team/${teamSelect}/next/${numOfFixtures}?timezon
   });
 
 
+//get data for league table
 axiosAPIFootball.get(`/leagueTable/2790`)
   .then(function (response) {
     // handle success
@@ -86,9 +93,8 @@ axiosAPIFootball.get(`/leagueTable/2790`)
     // always executed
   });
 
-  
 
-
+  //get subreddits based on specific clubs
   axiosDefault.get(`${subreddit}.json?limit=10`)
   .then(function (response) {
     // handle success
