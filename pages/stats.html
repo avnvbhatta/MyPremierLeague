@@ -6,23 +6,34 @@
     <title>Stats - My Premier League</title>
     <script defer src="/scripts/stats.js"></script>
     <script defer src="/scripts/logOut.js"></script>
+    <link rel="stylesheet" href="/styles/styles.scss">
+    <link rel="stylesheet" href="/styles/stats.scss">
+
 </head>
 <body>
     <nav>
+        <img id="userClubLogo" src="" alt="userClubLogo" >
         <a href="./home.html">Home</a>
         <a href="./fixtures.html">Fixtures</a>
         <a href="./stats.html">Stats</a>
-        <button id="logOutBtn" onclick='logOut()'>LogOut</button>
+        <a id="logOutBtn" onclick='logOut()'>log out</a>
     </nav>
-    <h1>Stats Page</h1>
-    <div class="topScorers">
-        <ul id="topScorersList">
-        </ul>
-    </div>
 
-    <div class="teamStats">
-        <ul id="teamStatsList">
-        </ul>
+    <div class="mainContent">
+        <div class="left">
+            <div class="myContainer">
+                <div class="title">Top Scorers</div>
+                <div id="topScorersList" class="content">
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="myContainer">
+                <div class="title">Team Stats</div>
+                <div id="teamStatsList" class="content">
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>

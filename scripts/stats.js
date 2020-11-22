@@ -1,4 +1,5 @@
 import axiosAPIFootball from "../helpers/helpers";
+import teamsData from "../helpers/teamsData";
 import {checkLoggedIn} from "../helpers/auth";
 
 //Check if stored user data is valid
@@ -6,16 +7,34 @@ checkLoggedIn();
 
 const userData = JSON.parse(localStorage.getItem('userData'));
 const {teamSelect} = userData;
+const {logo, colors} = teamsData[teamSelect];
+document.getElementsByTagName('body')[0].style.backgroundColor = colors;
+document.getElementById('userClubLogo').src = logo;
+
+
+  
 
 //Get Top Scorers
 axiosAPIFootball.get(`/topscorers/2790`)
 .then(function (response) {
     // handle success
     let data = response.data.api.topscorers;
-    let ul = document.getElementById("topScorersList");
+    let topScorersList = document.getElementById("topScorersList");
+    
+
     data.forEach(scorer => {
-        let {player_name, team_name, goals: {total, assists}} = scorer;
-        ul.innerHTML += (`<li>${player_name} - ${team_name} - ${total} Goals ${assists === null ? 0 : assists} Assists</li>`);
+        console.log(scorer);
+        let {player_name, team_id, team_name, goals: {total, assists}} = scorer;
+        let {logo} = teamsData[team_id];
+        topScorersList.innerHTML += 
+        (`<div class="scorerRow">
+          <img src=${logo} alt="scorerClubLogo" />
+          <div class="scorerDetails">
+              <div class="scorerName">${player_name}</div>
+              <div class="scorerTeam">${team_name}</div>
+              <div class="goals">${total} Goals ${assists === null ? 0 : assists} Assists</div>
+          </div>
+        </div>`);
     })
   
 })
@@ -32,7 +51,8 @@ axiosAPIFootball.get(`/statistics/2790/${teamSelect}`)
 .then(function (response) {
   // handle success
     let data = response.data.api.statistics;
-    let ul = document.getElementById("teamStatsList");
+    console.log('statsdata', data);
+    let teamStatsList = document.getElementById("teamStatsList");
     let {
         goals : {
             goalsAgainst: {total: totalAgainst}, 
@@ -47,7 +67,22 @@ axiosAPIFootball.get(`/statistics/2790/${teamSelect}`)
     } = data;
 
 
-    ul.innerHTML += (`<li>Goals <br> For: ${totalFor} Against: ${totalAgainst} <br> Matches <br> Played: ${totalMatches} Wins: ${totalWins} Draws: ${totalDraws} Losses: ${totalLosses}</li>`);
+    teamStatsList.innerHTML += 
+    `<div class="teamStats">
+      <img class="teamStatsLogo" src=${logo} alt="teamStatsLogo"/> 
+      <h2>Goals</h2>
+      <div class="goals">
+          <p>Scored: ${totalFor}</p>
+          <p>Conceded: ${totalAgainst}</p>
+      </div>
+      <h2>Matches</h2>
+      <div class="matches">
+          <p>Played: ${totalMatches}</p>
+          <p>Wins: ${totalWins}</p>
+          <p>Draws: ${totalDraws}</p>
+          <p>Losses: ${totalLosses}</p>
+      </div>
+    </div>`;
 
 
 })

@@ -4,8 +4,6 @@ import {checkLoggedIn} from "../helpers/auth";
 import teamsData from "../helpers/teamsData";
 
 
-
-
 //Check if stored user data is valid
 checkLoggedIn();
 
