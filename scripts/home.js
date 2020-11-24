@@ -17,11 +17,16 @@ const numOfFixtures = 5;
 
 
 //set background colors based on club selected
-document.getElementsByTagName('body')[0].style.backgroundColor = colors;
+let body = document.getElementsByTagName('body')[0];
+body.style.backgroundColor = colors;
 //get club's logo and place it on navbar
 document.getElementById('userClubLogo').src = logo;
 //highlight the navbar by underlining the current page
 document.getElementsByTagName('a')[0].innerHTML += `<div class="underline"></div>`;
+//set background color for overlay
+let overlay = document.getElementById('overlay')
+overlay.style.backgroundColor = colors;
+
 
 
 //Get fixtures in Eastern Time zone.
@@ -53,39 +58,73 @@ axiosAPIFootball.get(`/fixtures/team/${teamSelect}/next/${numOfFixtures}?timezon
             </div>
         `
       })
-  })
-  .catch(function (error) {
-    // handle error
-  })
-  .then(function () {
-    // always executed
-  });
 
 
-//get data for league table
-axiosAPIFootball.get(`/leagueTable/2790`)
-  .then(function (response) {
-    // handle success
-    let data = response.data.api.standings[0];
-    let leagueTable = document.getElementById('leagueTable');
 
-    data.forEach(teamData =>{
-        let {teamName, rank, logo, forme, goalsDiff, points, all} = teamData;
-        let {win, lose, draw, matchsPlayed} = all;
+            
+      //get data for league table
+      axiosAPIFootball.get(`/leagueTable/2790`)
+      .then(function (response) {
+        // handle success
+        let data = response.data.api.standings[0];
+        let leagueTable = document.getElementById('leagueTable');
+
+        data.forEach(teamData =>{
+            let {teamName, rank, logo, forme, goalsDiff, points, all} = teamData;
+            let {win, lose, draw, matchsPlayed} = all;
+            
+            let rowData = `<tr><td>${rank}</td>
+            <td><img class="teamLogo" src="${logo}" alt="${teamName}" ></td>
+            <td class="teamName">${teamName}</td>
+            <td>${forme}</td>
+            <td>${points}</td>
+            <td>${matchsPlayed}</td>
+            <td>${win}</td>
+            <td>${lose}</td>
+            <td>${draw}</td>
+            <td>${goalsDiff}</td></tr>`
+            leagueTable.innerHTML += rowData;
+        })
+
         
-        let rowData = `<tr><td>${rank}</td>
-        <td><img class="teamLogo" src="${logo}" alt="${teamName}" ></td>
-        <td class="teamName">${teamName}</td>
-        <td>${forme}</td>
-        <td>${points}</td>
-        <td>${matchsPlayed}</td>
-        <td>${win}</td>
-        <td>${lose}</td>
-        <td>${draw}</td>
-        <td>${goalsDiff}</td></tr>`
-        leagueTable.innerHTML += rowData;
-    })
-})
+          //get subreddits based on specific clubs
+          axiosDefault.get(`${subreddit}.json?limit=10`)
+          .then(function (response) {
+            // handle success
+            let data = response.data.data.children;
+            var newsList = document.getElementById("newsList");
+            data.forEach(news => {
+                
+                let redditURL = `http://www.reddit.com${news.data.permalink}`;
+                let thumbnail = news.data.thumbnail === 'self' ? placeHolderImage : news.data.thumbnail;
+                let title = news.data.title;
+                newsList.innerHTML += (`<div class="newsRow"><img class="redditThumb" src=${thumbnail} alt="${title}" /><a href="${redditURL}" target="_blank">${title}</a></div>`);
+            })
+
+            overlay.style.display = 'none';
+            body.style.overflow = 'auto';
+
+
+          })
+
+          
+          .catch(function (error) {
+            // handle error
+          })
+          .then(function () {
+            // always executed
+          });
+      })
+      .catch(function (error) {
+        // handle error
+      })
+      .then(function () {
+        // always executed
+      });
+
+
+
+  })
   .catch(function (error) {
     // handle error
   })
@@ -93,24 +132,3 @@ axiosAPIFootball.get(`/leagueTable/2790`)
     // always executed
   });
 
-
-  //get subreddits based on specific clubs
-  axiosDefault.get(`${subreddit}.json?limit=10`)
-  .then(function (response) {
-    // handle success
-    let data = response.data.data.children;
-    var newsList = document.getElementById("newsList");
-    data.forEach(news => {
-        
-        let redditURL = `http://www.reddit.com${news.data.permalink}`;
-        let thumbnail = news.data.thumbnail === 'self' ? placeHolderImage : news.data.thumbnail;
-        let title = news.data.title;
-        newsList.innerHTML += (`<div class="newsRow"><img class="redditThumb" src=${thumbnail} alt="${title}" /><a href="${redditURL}" target="_blank">${title}</a></div>`);
-    })
-  })
-  .catch(function (error) {
-    // handle error
-  })
-  .then(function () {
-    // always executed
-  });

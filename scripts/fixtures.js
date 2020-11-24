@@ -11,11 +11,16 @@ const {teamSelect} = userData;
 const {logo, colors} = teamsData[teamSelect];
 
 //set background colors based on club selected
-document.getElementsByTagName('body')[0].style.backgroundColor = colors;
+let body = document.getElementsByTagName('body')[0];
+body.style.backgroundColor = colors;
 //get club's logo and place it on navbar
 document.getElementById('userClubLogo').src = logo;
 //highlight the navbar by underlining the current page
 document.getElementsByTagName('a')[1].innerHTML += `<div class="underline"></div>`;
+//set background color for overlay
+let overlay = document.getElementById('overlay')
+overlay.style.backgroundColor = colors;
+
 
 
 let fixturesData = [];
@@ -51,6 +56,9 @@ axiosAPIFootball.get(`/fixtures/league/2790?timezone=America/New_York`)
         selectDropdown.innerHTML += `<option value="${i}">Gameweek ${i+1} ${i === currentGW ? "(Current)" : ""}</option>`
       }
       setDropdownValue(currentGW);
+      overlay.style.display = 'none';
+      body.style.overflow = 'auto';
+
       
     })
     .catch(function (error) {

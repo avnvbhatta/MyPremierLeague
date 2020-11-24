@@ -11,11 +11,15 @@ const {teamSelect} = userData;
 const {logo, colors} = teamsData[teamSelect];
 
 //set background colors based on club selected
-document.getElementsByTagName('body')[0].style.backgroundColor = colors;
+let body = document.getElementsByTagName('body')[0];
+body.style.backgroundColor = colors;
 //get club's logo and place it on navbar
 document.getElementById('userClubLogo').src = logo;
 //highlight the navbar by underlining the current page
 document.getElementsByTagName('a')[2].innerHTML += `<div class="underline"></div>`;
+//set background color for overlay
+let overlay = document.getElementById('overlay')
+overlay.style.backgroundColor = colors;
 
 
 //Get Top Scorers
@@ -41,6 +45,56 @@ axiosAPIFootball.get(`/topscorers/2790`)
         </div>`);
     })
   
+      //Get Top Scorers
+      axiosAPIFootball.get(`/statistics/2790/${teamSelect}`)
+      .then(function (response) {
+        // handle success
+          let data = response.data.api.statistics;
+          let teamStatsList = document.getElementById("teamStatsList");
+          //Destructure the data
+          let {
+              goals : {
+                  goalsAgainst: {total: totalAgainst}, 
+                  goalsFor: {total: totalFor} 
+              }, 
+              matchs: {
+                  draws: {total: totalDraws}, 
+                  loses: {total: totalLosses}, 
+                  matchsPlayed: {total: totalMatches}, 
+                  wins: {total: totalWins}
+              }
+          } = data;
+
+          //Append to element
+          teamStatsList.innerHTML += 
+          `<div class="teamStats">
+            <img class="teamStatsLogo" src=${logo} alt="teamStatsLogo"/> 
+            <h2>Goals</h2>
+            <div class="goals">
+                <p>Scored: ${totalFor}</p>
+                <p>Conceded: ${totalAgainst}</p>
+            </div>
+            <h2>Matches</h2>
+            <div class="matches">
+                <p>Played: ${totalMatches}</p>
+                <p>Wins: ${totalWins}</p>
+                <p>Draws: ${totalDraws}</p>
+                <p>Losses: ${totalLosses}</p>
+            </div>
+          </div>`;
+
+        overlay.style.display = 'none';
+        body.style.overflow = 'auto';
+
+
+
+      })
+      .catch(function (error) {
+        // handle error
+      })
+      .then(function () {
+        // always executed
+      });
 })
 .catch(function (error) {
   // handle error
@@ -49,50 +103,3 @@ axiosAPIFootball.get(`/topscorers/2790`)
   // always executed
 });
 
-
-//Get Top Scorers
-axiosAPIFootball.get(`/statistics/2790/${teamSelect}`)
-.then(function (response) {
-  // handle success
-    let data = response.data.api.statistics;
-    let teamStatsList = document.getElementById("teamStatsList");
-    //Destructure the data
-    let {
-        goals : {
-            goalsAgainst: {total: totalAgainst}, 
-            goalsFor: {total: totalFor} 
-        }, 
-        matchs: {
-            draws: {total: totalDraws}, 
-            loses: {total: totalLosses}, 
-            matchsPlayed: {total: totalMatches}, 
-            wins: {total: totalWins}
-        }
-    } = data;
-
-    //Append to element
-    teamStatsList.innerHTML += 
-    `<div class="teamStats">
-      <img class="teamStatsLogo" src=${logo} alt="teamStatsLogo"/> 
-      <h2>Goals</h2>
-      <div class="goals">
-          <p>Scored: ${totalFor}</p>
-          <p>Conceded: ${totalAgainst}</p>
-      </div>
-      <h2>Matches</h2>
-      <div class="matches">
-          <p>Played: ${totalMatches}</p>
-          <p>Wins: ${totalWins}</p>
-          <p>Draws: ${totalDraws}</p>
-          <p>Losses: ${totalLosses}</p>
-      </div>
-    </div>`;
-
-
-})
-.catch(function (error) {
-  // handle error
-})
-.then(function () {
-  // always executed
-});
