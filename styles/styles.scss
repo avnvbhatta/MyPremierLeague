@@ -120,6 +120,7 @@ nav{
                 flex-direction: row;
                 flex-wrap: wrap;
                 width: 100%;
+                align-items: center;
                 img{
                     width: 50px;
                     height: 50px;
@@ -138,6 +139,13 @@ nav{
                 align-items: center;
                 justify-content: center;
                 text-align: center;
+                .venue{
+                    font-size: 0.8em;
+                }
+                .scores{
+                    font-size: 1.8em;
+
+                }
             }
         }
 

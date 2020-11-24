@@ -81,6 +81,12 @@ axiosAPIFootball.get(`/fixtures/league/2790?timezone=America/New_York`)
 selectDropdown.addEventListener("change", function(event) {
     let selected = parseInt(event.target.value);
     selectedGW = selected;
+    if(selected !== currentGW){
+        selectDropdown.style.width = '135px';
+    }
+    else{
+      selectDropdown.style.width = '195px'; 
+    }
     populate(selected);
 });
 
@@ -90,11 +96,11 @@ function populate(selectedGW){
     var fixtureList = document.getElementById("fixturesList");
     fixtureList.innerHTML = "";
     for(let i=selectedGW*10; i<selectedGW*10+10; i++){
+      console.log(fixturesData[i])
 
       let {homeTeam: {logo: homeTeamLogo, team_name: homeTeamName}} = fixturesData[i];
         let {awayTeam: {logo: awayTeamLogo, team_name: awayTeamName}} = fixturesData[i];
-        let date = fixturesData[i].event_date;
-        let venue = fixturesData[i].venue;
+        let {venue, event_date, goalsHomeTeam, goalsAwayTeam} = fixturesData[i];
 
         
         fixtureList.innerHTML +=
@@ -105,8 +111,9 @@ function populate(selectedGW){
                     <p>${homeTeamName}</p>
                 </div>
                 <div class="fixtureDetails">
+                    ${goalsHomeTeam == null ||  goalsAwayTeam == null ? '' : `<div class="scores">${goalsHomeTeam} - ${goalsAwayTeam}</div>`  }
+                    <div class="datetime">${moment(event_date).format('ddd, MMM do @ hA')}</div>
                     <div class="venue">${venue}</div>
-                    <div class="datetime">${moment(date).format('ddd, MMM do @ hA')}</div>
                 </div>
                 <div class="awayTeam">
                     <p>${awayTeamName}</p>

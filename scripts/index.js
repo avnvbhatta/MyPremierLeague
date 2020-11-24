@@ -1,6 +1,8 @@
 import teamsData from "../helpers/teamsData";
 import {logIn, signUp} from "../helpers/auth";
 
+document.getElementById('nav').style.display = 'none';
+
 let selectTeams = document.getElementById('teamSelect');
 //populate teams dynamically
 for (const [key, value] of Object.entries(teamsData)) {
