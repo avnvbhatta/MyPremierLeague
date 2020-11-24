@@ -1,7 +1,7 @@
 import axiosAPIFootball from "../helpers/helpers";
 import {checkLoggedIn} from "../helpers/auth";
 import teamsData from "../helpers/teamsData";
-
+import moment from "moment";
 
 //Check if stored user data is valid
 checkLoggedIn();
@@ -106,7 +106,7 @@ function populate(selectedGW){
                 </div>
                 <div class="fixtureDetails">
                     <div class="venue">${venue}</div>
-                    <div class="datetime">${date}</div>
+                    <div class="datetime">${moment(date).format('ddd, MMM do @ hA')}</div>
                 </div>
                 <div class="awayTeam">
                     <p>${awayTeamName}</p>

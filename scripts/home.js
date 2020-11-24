@@ -3,6 +3,7 @@ import axiosAPIFootball from "../helpers/helpers";
 import placeHolderImage from "../images/img-placeholder.png";
 import teamsData from "../helpers/teamsData";
 import {checkLoggedIn} from "../helpers/auth";
+import moment from "moment";
 
 //Check if stored user data is valid 
 checkLoggedIn();
@@ -49,7 +50,7 @@ axiosAPIFootball.get(`/fixtures/team/${teamSelect}/next/${numOfFixtures}?timezon
                 </div>
                 <div class="fixtureDetails">
                     <div class="venue">${venue}</div>
-                    <div class="datetime">${date}</div>
+                    <div class="datetime">${moment(date).format('ddd, MMM do @ hA')}</div>
                 </div>
                 <div class="awayTeam">
                     <p>${awayTeamName}</p>
