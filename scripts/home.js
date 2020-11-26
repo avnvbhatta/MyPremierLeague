@@ -49,8 +49,8 @@ axiosAPIFootball.get(`/fixtures/team/${teamSelect}/next/${numOfFixtures}?timezon
                     <p>${homeTeamName}</p>
                 </div>
                 <div class="fixtureDetails">
-                    <div class="venue">${venue}</div>
                     <div class="datetime">${moment(date).format('ddd, MMM do @ hA')}</div>
+                    <div class="venue">${venue}</div>
                 </div>
                 <div class="awayTeam">
                     <p>${awayTeamName}</p>
