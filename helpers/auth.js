@@ -1,7 +1,7 @@
 const axios = require('axios').default;
 
 const logIn = (formData) => {
-    axios.post('http://localhost:5000/login', formData)
+    axios.post('https://mypremierleague-server.herokuapp.com/login', formData)
         .then(res => {
             if(res.data.data){
                 localStorage.setItem('userData', JSON.stringify(res.data.data));
@@ -22,7 +22,7 @@ const logIn = (formData) => {
 }
 
 const signUp =(formData) =>{
-    axios.post('http://localhost:5000/signup', formData)
+    axios.post('https://mypremierleague-server.herokuapp.com/signup', formData)
     .then(res => {
     })
     .catch(err=>{
@@ -39,7 +39,7 @@ const checkLoggedIn = () => {
     }
     const {id} = userData;
 
-    axios.post('http://localhost:5000/checkloggedin', {"id": id})
+    axios.post('https://mypremierleague-server.herokuapp.com/checkloggedin', {"id": id})
         .catch(err=>{
             console.log(err)
             window.location.replace("../index.html");

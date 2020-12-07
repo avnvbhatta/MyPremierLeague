@@ -96,8 +96,6 @@ function populate(selectedGW){
     var fixtureList = document.getElementById("fixturesList");
     fixtureList.innerHTML = "";
     for(let i=selectedGW*10; i<selectedGW*10+10; i++){
-      console.log(fixturesData[i])
-
       let {homeTeam: {logo: homeTeamLogo, team_name: homeTeamName}} = fixturesData[i];
         let {awayTeam: {logo: awayTeamLogo, team_name: awayTeamName}} = fixturesData[i];
         let {venue, event_date, goalsHomeTeam, goalsAwayTeam} = fixturesData[i];
