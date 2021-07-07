@@ -1,0 +1,34 @@
+
+
+.mainContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .myContainer{
+        max-width: 900px;
+        margin:auto;
+        width: 100%;
+
+        .gwSelectors{
+            margin-left: auto;
+            min-width: 200px;
+            select{
+                height: 50px;
+                padding: 1em;
+                border-radius: 10px;
+                background: #38003D;
+                color: white;
+                outline: none;
+                border: none;
+                cursor: pointer;
+            }
+            i{
+                cursor: pointer;
+                margin: 0 0.5em;
+            }
+        }
+    }
+}
+

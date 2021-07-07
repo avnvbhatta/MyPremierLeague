@@ -1,15 +1,18 @@
 const axios = require('axios').default;
 
 const logIn = (formData) => {
-    axios.post('http://localhost:5000/login', formData)
+    axios.post('https://mypremierleague-server.herokuapp.com/login', formData)
         .then(res => {
-            console.log(res.data)
             if(res.data.data){
                 localStorage.setItem('userData', JSON.stringify(res.data.data));
                 window.location.replace("/pages/home.html");
             }
             else{
-                alert('No user found')
+                // alert('No user found')
+                document.getElementById('error').innerHTML = 
+                `<div class="alert alert-danger" role="alert">
+                    Invalid email and/or password.
+              </div>`
             }
             
         })
@@ -19,9 +22,8 @@ const logIn = (formData) => {
 }
 
 const signUp =(formData) =>{
-    axios.post('http://localhost:5000/signup', formData)
+    axios.post('https://mypremierleague-server.herokuapp.com/signup', formData)
     .then(res => {
-        console.log(res.data)
     })
     .catch(err=>{
         console.log(err)
@@ -37,7 +39,7 @@ const checkLoggedIn = () => {
     }
     const {id} = userData;
 
-    axios.post('http://localhost:5000/checkloggedin', {"id": id})
+    axios.post('https://mypremierleague-server.herokuapp.com/checkloggedin', {"id": id})
         .catch(err=>{
             console.log(err)
             window.location.replace("../index.html");

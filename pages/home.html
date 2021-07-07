@@ -7,41 +7,63 @@
     <script defer src="/scripts/home.js"></script>
     <script defer src="/scripts/logOut.js"></script>
     <link rel="stylesheet" href="/styles/home.scss">
+    <link rel="stylesheet" href="/styles/styles.scss">
+    
+
 </head>
 <body>
     <nav>
-        <a href="/pages/home.html">Home</a>
-        <a href="/pages/fixtures.html">Fixtures</a>
-        <a href="/pages/stats.html">Stats</a>
-        <button id="logOutBtn" onclick='logOut()'>LogOut</button>
+        <img id="userClubLogo" src="" alt="userClubLogo" >
+        <a href="./home.html">Home</a>
+        <a href="./fixtures.html">Fixtures</a>
+        <a href="./stats.html">Stats</a>
+        <a id="logOutBtn" onclick='logOut()'>log out</a>
     </nav>
-    <h1>Home Page</h1>
-    <div class="upcomingFixtures">
-        <h2>Upcoming Fixtures</h2>
-        <ul id="fixturesList"></ul>
+
+    <div class="overlay" id="overlay">
+        <div class="centeredLoader">
+            <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+        </div>
     </div>
 
-    <div class="news">
-        <h2>News</h2>
-        <ul id="newsList"></ul>
-    </div>
-
-    <div class="table">
-        <h2>League Table</h2>
-        <table id="leagueTable">
-            <tr>
-                <th>Rank</th>
-                <th><img src="" alt="" >Team</th>
-                <th>Form</th>
-                <th>Points</th>
-                <th>Played</th>
-                <th>Won</th>
-                <th>Lost</th>
-                <th>Draw</th>
-                <th>Goal Diff</th>
-            </tr>
-            
-        </table>
+    <div class="mainContent">
+        <div class="left">
+            <div class="myContainer">
+                <div class="title">Upcoming Fixtures</div>
+                <div id="fixturesList" class="content"></div>
+            </div>
+        
+            <div class="myContainer">
+                <div class="title">News</div>
+                <div class="content">
+                    <div id="newsList" class="news"></div>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="table myContainer">
+                <div class="title">League Table</div>
+                <div class="content content--table">
+                    <table id="leagueTable">
+                        <tr>
+                            <th>Rank</th>
+                            <th colspan="2">Team</th>
+                            <th>Form</th>
+                            <th>Points</th>
+                            <th>Played</th>
+                            <th>Won</th>
+                            <th>Lost</th>
+                            <th>Draw</th>
+                            <th>Goal Diff</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+    
+    
+        
     </div>
     
 </body>

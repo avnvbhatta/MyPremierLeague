@@ -6,25 +6,42 @@
     <title>Fixtures - My Premier League</title>
     <script defer src="/scripts/fixtures.js"></script>
     <script defer src="/scripts/logOut.js"></script>
-    <script>
-        
-    </script>
+    <link rel="stylesheet" href="/styles/fixtures.scss">
+    <link rel="stylesheet" href="/styles/styles.scss">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
 </head>
 <body>
     <nav>
-        <a href="/pages/home.html">Home</a>
-        <a href="/pages/fixtures.html">Fixtures</a>
-        <a href="/pages/stats.html">Stats</a>
-        <button id="logOutBtn" onclick='logOut()'>LogOut</button>
+        <img id="userClubLogo" src="" alt="userClubLogo" >
+        <a href="./home.html">Home</a>
+        <a href="./fixtures.html">Fixtures</a>
+        <a href="./stats.html">Stats</a>
+        <a id="logOutBtn" onclick='logOut()'>log out</a>
     </nav>
-    <h1>Fixtures Page</h1>
-    <select name="gameweek" id="gameweek">
+    
+    <div class="overlay" id="overlay">
+        <div class="centeredLoader">
+            <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+        </div>
+    </div>
+    
+    <div class="mainContent">
+        <div class="myContainer">
+            <div class="title">
+                <p>Upcoming Fixtures</p>
+                <div class="gwSelectors">
+                    <i id="minus" class="fas fa-chevron-left fa-lg"></i>
+                    <select name="gameweek"  id="gameweek"></select>
+                    <i  id="plus" class="fas fa-chevron-right fa-lg"></i>
+                </div>
+            </div>
+            <div id="fixturesList" class="content"></div>
+        </div>    
+    </div>
 
-    </select>
+    
 
-    <ul id="fixturesList">
-
-    </ul>
   
 </body>
 </html>

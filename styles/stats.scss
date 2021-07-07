@@ -1,0 +1,68 @@
+.mainContent{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .content{
+        .scorerRow{
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            margin: 0.5em 0;
+            background-color: white;
+            border-radius: 10px;
+
+
+            .scorerDetails{
+               
+                .scorerName{
+                    font-weight: bold;
+                    font-size: 1.2em;
+                    margin-bottom: 0.2em;
+                }
+                .scorerTeam{
+                    font-weight: lighter;
+                    margin-bottom: 0.2em;
+                }
+                .goals{
+                    font-weight: bold;
+                    font-size: 1em;
+                }
+            }
+
+            
+            img{
+                width: 70px;
+                height: 70px;
+                padding: 1.5em;
+            }
+        }
+
+        .teamStats{
+            display: flex;
+            flex-direction: column;
+            width: 400px;
+            img{
+                widtH: 100px;
+                height: 100px;
+                margin: auto;
+            }
+            h2{
+                font-weight: bold;
+                font-size: 1.5em;
+                margin: 1em auto;
+            }
+            .goals, .matches{
+                background-color: white;
+                border-radius: 10px;
+
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+            }
+        }
+    }
+
+}

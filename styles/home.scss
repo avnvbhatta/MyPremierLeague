@@ -7,3 +7,23 @@
     height:50px;
     width: 50px;
 }
+
+.mainContent{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin:auto;
+    text-align: center;
+
+    .left{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 900px;
+    }
+    .right{
+        display: flex;
+        flex-direction: row;
+        max-width: 900px;        
+    }
+}

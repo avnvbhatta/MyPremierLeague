@@ -1,6 +1,8 @@
 import teamsData from "../helpers/teamsData";
 import {logIn, signUp} from "../helpers/auth";
 
+document.getElementById('nav').style.display = 'none';
+
 let selectTeams = document.getElementById('teamSelect');
 //populate teams dynamically
 for (const [key, value] of Object.entries(teamsData)) {
@@ -8,7 +10,8 @@ for (const [key, value] of Object.entries(teamsData)) {
 }
 
 //Login Form Submit
-document.getElementById('loginForm').onsubmit = function(event) { 
+let loginForm = document.getElementById('loginForm');
+loginForm.onsubmit = function(event) { 
     event.preventDefault();
     let email = document.getElementById("email_login").value;
     let password = document.getElementById("password_login").value;
@@ -20,7 +23,8 @@ document.getElementById('loginForm').onsubmit = function(event) {
 };
 
 //SignUp Form Submit
-document.getElementById('signUpForm').onsubmit = function(event) { 
+let signUpForm  = document.getElementById('signUpForm');
+signUpForm.onsubmit = function(event) { 
     event.preventDefault();
     let name = document.getElementById("name").value;
     let email = document.getElementById("email_signup").value;
@@ -33,8 +37,13 @@ document.getElementById('signUpForm').onsubmit = function(event) {
         teamSelect: teamSelect
     }
     signUp(formData);
+
+    //clear form on submit
+    signUpForm.reset();
 };
 
-
-
+//Reset login errors field
+loginForm.addEventListener('input' , function(){
+    document.getElementById('error').innerHTML = '';
+})
 
